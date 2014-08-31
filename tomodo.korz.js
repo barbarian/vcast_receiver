@@ -10,7 +10,7 @@
 if(typeof korz == 'undefined'){
 
     var korz = {
-       router:"https://vcast-proxy"+ Math.floor((Math.random() * 3) + 1) +".herokuapp.com"
+       router:"https://vcast-proxy"+ Math.floor((Math.random() * 3) + 1) +".herokuapp.com/"
     };
     korz.config = function(options){
         for(var opt in options){
@@ -55,7 +55,7 @@ if(typeof korz == 'undefined'){
 
                 // check for cross domain
                 if(superHttpRequest.isCrossDomain()){
-                    superHttpRequest.openArguments[1] = korz.router +  superHttpRequest.url;
+                    superHttpRequest.openArguments[1] = korz.router +  superHttpRequest.url.replace(/^https?:\/\//,'');
                 }
             }
             //
