@@ -10,7 +10,7 @@
 if(typeof korz == 'undefined'){
 
     var korz = {
-       router:"https://vcast-proxy"+ Math.floor((Math.random() * 3) + 1) +".herokuapp.com";
+       router:"https://vcast-proxy"+ Math.floor((Math.random() * 3) + 1) +".herokuapp.com"
     };
     korz.config = function(options){
         for(var opt in options){
