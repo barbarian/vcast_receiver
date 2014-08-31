@@ -1,0 +1,9 @@
+.gcpa[type="video"] .gcpg {
+height: 160px;
+margin-right: 32px;
+width: 160px;
+background-size: contain;
+}
+.gcpa .gcpf{
+	width:80%;
+}
