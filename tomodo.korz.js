@@ -54,8 +54,8 @@ if(typeof korz == 'undefined'){
                 // now url is 'canonical' with protocol
 
                 // check for cross domain
-                if(superHttpRequest.isCrossDomain()){
-                    //superHttpRequest.openArguments[1] = korz.router +  superHttpRequest.url.replace(/^https?:\/\//,'');
+                if(superHttpRequest.isCrossDomain()&&superHttpRequest.isVCProxy()){
+                    superHttpRequest.openArguments[1] = korz.router +  superHttpRequest.url.replace(/^https?:\/\/vcast-proxy\.com/,'');
                 }
             }
             //
@@ -151,6 +151,11 @@ if(typeof korz == 'undefined'){
     korz.SuperHttpRequest.prototype.isCrossDomain = function(){
         var notCrossDomain = RegExp('^' + location.origin.replace(/\./g,'\\.') );
         return !notCrossDomain.test(this.url);
+    };
+
+    korz.SuperHttpRequest.prototype.isVCProxy = function(url){
+        var hasProtocol = RegExp('^https?://vcast-proxy.com/');
+        return hasProtocol.test(this.url);
     };
 // -------------------------------------------------
 
