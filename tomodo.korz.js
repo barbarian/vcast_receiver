@@ -56,7 +56,7 @@ if(typeof korz == 'undefined'){
 
                 // check for cross domain
                 if(korz.enabled && superHttpRequest.isCrossDomain()){
-                    superHttpRequest.openArguments[1] = korz.router +  superHttpRequest.url.replace(/^https?:\/\//,'');
+                    superHttpRequest.openArguments[1] = korz.router +  superHttpRequest.url.replace(/^https?:\//,'');
                 }
 
                 if(superHttpRequest.isVCProxy()&&superHttpRequest.isHLS()){
