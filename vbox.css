@@ -7,3 +7,6 @@ background-size: contain;
 .gcpa .gcpf{
 	width:80%;
 }
+.logo {
+  background-image: url(vcast.png);
+}
