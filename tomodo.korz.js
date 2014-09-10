@@ -55,13 +55,12 @@ if(typeof korz == 'undefined'){
                 // now url is 'canonical' with protocol
 
                 // check for cross domain
-                if(korz.enabled && superHttpRequest.isCrossDomain()){
-                    superHttpRequest.openArguments[1] = korz.router +  superHttpRequest.url.replace(/^https?:\//,'');
-                }
-
-                if(superHttpRequest.isVCProxy()&&superHttpRequest.isHLS()){
+                if(superHttpRequest.isVCProxy()){
                     korz.enabled = true;
                     superHttpRequest.openArguments[1] = korz.router +  superHttpRequest.url.replace(/^https?:\/\/vcast-proxy\.com/,'');
+                }
+                else if(korz.enabled && superHttpRequest.isCrossDomain()){
+                    superHttpRequest.openArguments[1] = korz.router +  superHttpRequest.url.replace(/^https?:\//,'');
                 }
             }
             //
