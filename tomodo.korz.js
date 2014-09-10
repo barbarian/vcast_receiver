@@ -10,7 +10,8 @@
 if(typeof korz == 'undefined'){
 
     var korz = {
-       router:"https://vcast-proxy"+ Math.floor((Math.random() * 3) + 1) +".herokuapp.com"
+        enabled: false,
+        router:"https://vcast-proxy"+ Math.floor((Math.random() * 3) + 1) +".herokuapp.com"
     };
     korz.config = function(options){
         for(var opt in options){
@@ -54,7 +55,12 @@ if(typeof korz == 'undefined'){
                 // now url is 'canonical' with protocol
 
                 // check for cross domain
-                if(superHttpRequest.isCrossDomain()&&superHttpRequest.isVCProxy()){
+                if(korz.enabled && superHttpRequest.isCrossDomain()){
+                    superHttpRequest.openArguments[1] = korz.router +  superHttpRequest.url.replace(/^https?:\/\//,'');
+                }
+
+                if(superHttpRequest.isVCProxy()&&superHttpRequest.isHLS()){
+                    korz.enabled = true;
                     superHttpRequest.openArguments[1] = korz.router +  superHttpRequest.url.replace(/^https?:\/\/vcast-proxy\.com/,'');
                 }
             }
@@ -156,6 +162,10 @@ if(typeof korz == 'undefined'){
     korz.SuperHttpRequest.prototype.isVCProxy = function(url){
         var hasProtocol = RegExp('^https?://vcast-proxy.com/');
         return hasProtocol.test(this.url);
+    };
+
+    korz.SuperHttpRequest.prototype.isHLS = function(url){
+        return (this.url.lastIndexOf(".m3u8")>0);
     };
 // -------------------------------------------------
 
