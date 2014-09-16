@@ -10,3 +10,6 @@ background-size: contain;
 .logo {
   background-image: url(vcast.png);
 }
+.background {
+  background: center repeat url(bg.png);
+}
