@@ -1,12 +1,17 @@
-.gcpa[type="video"] .gcpg {
+/*.gcpa[type="video"] .gcpg {
 height: 160px;
 margin-right: 32px;
 width: 160px;
 background-size: contain;
-}
-.gcpa .gcpf{
-	width:80%;
-}
+}*/
+
+/*.gcpa[type="video"] .gcpq {
+  align-self: flex-end;
+  height: 143px;
+  margin-right: 32px;
+  min-width: 96px;
+}*/
+
 .logo {
   background-image: url(vcast.png);
 }
