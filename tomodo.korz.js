@@ -13,7 +13,7 @@ if(typeof korz == 'undefined'){
     var max = am?3:6;
     var korz = {
         enabled: false,
-        router:"https://vcast-p"+ (Math.floor(Math.random() * (max - min + 1)) + min)) +".herokuapp.com"
+        router:"https://vcast-p"+ ((Math.floor(Math.random() * (max - min + 1)) + min)) +".herokuapp.com"
     };
     korz.config = function(options){
         for(var opt in options){
