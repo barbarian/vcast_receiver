@@ -8,12 +8,10 @@
 
 //ifndef
 if(typeof korz == 'undefined'){
-    var am = new Date().getUTCHours()<12;
-    var min = am?1:4;
-    var max = am?3:6;
+
     var korz = {
         enabled: false,
-        router:"https://vcast-p"+ ((Math.floor(Math.random() * (max - min + 1)) + min)) +".herokuapp.com"
+        router:"https://vcast-proxy"+ Math.floor((Math.random() * 3) + 1) +".herokuapp.com"
     };
     korz.config = function(options){
         for(var opt in options){
