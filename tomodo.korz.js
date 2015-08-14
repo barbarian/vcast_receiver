@@ -8,13 +8,18 @@
 
 //ifndef
 if(typeof korz == 'undefined'){
-    var am = new Date().getUTCHours()<12;
-    var min = am?1:4;
-    var max = am?3:6;
+    
     var korz = {
-        enabled: false,
-        router:"https://vcast-p"+ ((Math.floor(Math.random() * (max - min + 1)) + min)) +".herokuapp.com"
+        enabled: false
     };
+    korz.router = function(){
+        var am = new Date().getUTCHours()<12;
+        var min = am?1:4;
+        var max = am?3:6;
+
+        return "https://vcast-p"+ ((Math.floor(Math.random() * (max - min + 1)) + min)) +".herokuapp.com";        
+    }
+
     korz.config = function(options){
         for(var opt in options){
             this[opt] = options[opt];
@@ -59,10 +64,10 @@ if(typeof korz == 'undefined'){
                 // check for cross domain
                 if(superHttpRequest.isVCProxy()){
                     korz.enabled = true;
-                    superHttpRequest.openArguments[1] = korz.router +  superHttpRequest.url.replace(/^https?:\/\/vcast-proxy\.com/,'');
+                    superHttpRequest.openArguments[1] = korz.router() +  superHttpRequest.url.replace(/^https?:\/\/vcast-proxy\.com/,'');
                 }
                 else if(korz.enabled && superHttpRequest.isCrossDomain()){
-                    superHttpRequest.openArguments[1] = korz.router +  superHttpRequest.url.replace(/^https?:\//,'');
+                    superHttpRequest.openArguments[1] = korz.router() +  superHttpRequest.url.replace(/^https?:\//,'');
                 }
             }
             //
